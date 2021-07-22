@@ -10,8 +10,9 @@ def make_animation():
 	ENDPOINT = 'http://epic.gsfc.nasa.gov'
 	
 	# get recent images
-	day_before_yesterday = datetime.today() + timedelta(days=-2)
+	day_before_yesterday = datetime.today() + timedelta(days=-4)
 	recent_images = e.get_recent_images(since=day_before_yesterday)
+	latest_image = recent_images[0]['image']
 		
 	# download each image to a temp directory
 	for i, image in enumerate(recent_images):
@@ -48,4 +49,4 @@ def make_animation():
 	for f in tmp_files:
 		os.remove(f)
 		
-	return image['image']
+	return latest_image
