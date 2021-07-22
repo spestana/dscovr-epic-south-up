@@ -48,7 +48,7 @@ def read_and_reply_to_tweets():
 		if COMMAND_FLAG_STR in mention.full_text.lower():
 			# perform the action we want
 			# ABOUT_DSCOVR_EBOOKS
-			api.update_status('@' + mention.user.screen_name +
+			api.update_status('@' + mention.user.screen_name + ' ' +
                     ABOUT_DSCOVR_EBOOKS, mention.id)
 		
 def tweet_epic_animation():
