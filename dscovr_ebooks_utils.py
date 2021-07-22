@@ -21,7 +21,7 @@ def make_animation():
 			e.download_image(image, downloadfile)
 			# Add annotation to image, resize, rotate
 			annotation = image['image']
-			os.system(f"magick mogrify -resize 1000x1000 -rotate 180 -fill white -gravity South -pointsize 30 -annotate +0+10 {annotation} {downloadfile.name}")
+			os.system(f"convert -resize 800x800 -rotate 180 -fill white -gravity South -pointsize 20 -annotate +0+10 {annotation} {downloadfile.name} {downloadfile.name}")
 
 	# list of image magick options we want to use for convert to gif animation
 	options = [#'-channel', 'B', '-gamma', '0.90',
