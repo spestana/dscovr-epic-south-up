@@ -7,7 +7,7 @@ import dscovr_ebooks_utils # import my function for making an animation
 COMMAND_FLAG_STR = '#dscovr_ebooks'
 
 # default response text to return when mentioned
-ABOUT_DSCOVR_EBOOKS = 'this is a bot'
+ABOUT_DSCOVR_EBOOKS = 'I am a bot. Learn more here: https://spestana.github.io/2021/07/dscovr-epic-south-up/'
 
 FILE_NAME = 'last_seen_id.txt'
 
@@ -48,13 +48,14 @@ def read_and_reply_to_tweets():
 		if COMMAND_FLAG_STR in mention.full_text.lower():
 			# perform the action we want
 			# ABOUT_DSCOVR_EBOOKS
-			print(mention.id, mention.full_text)
+			api.update_status('@' + mention.user.screen_name +
+                    ABOUT_DSCOVR_EBOOKS, mention.id)
 		
 def tweet_epic_animation():
 	# retrieve the latest DSCOVR EPIC imagery and create a gif
-	dscovr_ebooks_utils.make_animation()
+	last_image = dscovr_ebooks_utils.make_animation()
 	# post this image to twitter
-	api.update_with_media('animation.gif')
+	api.update_with_media(filename='animation.gif', status=last_image)
 
 
 
