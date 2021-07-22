@@ -13,7 +13,10 @@ def make_animation():
 	day_before_yesterday = datetime.today() + timedelta(days=-3)
 	recent_images = e.get_recent_images(since=day_before_yesterday)
 	latest_image = recent_images[0]['image']
-		
+	# only get up to 10 images
+	if len(recent_images) > 10:
+		recent_images = recent_images[:10]
+	
 	# download each image to a temp directory
 	for i, image in enumerate(recent_images):
 		n = str(i).rjust(2, '0')
