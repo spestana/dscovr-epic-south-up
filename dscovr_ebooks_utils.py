@@ -10,7 +10,7 @@ def make_animation():
 	ENDPOINT = 'http://epic.gsfc.nasa.gov'
 	
 	# get recent images
-	day_before_yesterday = datetime.today() + timedelta(days=-4)
+	day_before_yesterday = datetime.today() + timedelta(days=-3)
 	recent_images = e.get_recent_images(since=day_before_yesterday)
 	latest_image = recent_images[0]['image']
 		
